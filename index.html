@@ -406,6 +406,7 @@
 .rules-box li strong { color: var(--ink); }
 
 </style>
+<style>@media print{#tp-gate{display:none!important;}.no-print,.acc,nav,button{display:none!important;}html{overflow:visible!important;}.hcard,.book-header{break-inside:avoid;}}</style>
 </head>
 <body>
 <div id="tp-gate" style="position:fixed;inset:0;z-index:99999;background:#f4f1ea;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif Georgian',serif;">
@@ -470,6 +471,7 @@
         <div class="th-eyebrow">სრული პორტფელი · Total Portfolio</div>
         <div class="th-person">ლაშა ფხაკაძე</div>
         <div class="th-sub">სამი წიგნი · BOG · TBC · GALT · ვისბადენი</div>
+        <div id="me-fees" style="font-family:ui-monospace,monospace;font-size:11px;color:var(--red);margin-top:7px;letter-spacing:0.5px;"></div>
       </div>
       <div class="th-live"><span id="total-live-stamp">● იტვირთება…</span></div>
     </div>
@@ -706,6 +708,12 @@
   <div class="tx-header"><h3 class="tx-title">შიდა გადატანები · Internal Transfers</h3></div>
   <div id="me-transfers" class="rules-box" style="border-left-color:#8b6914;"></div>
 
+  <div class="tx-header"><h3 class="tx-title">📄 Trading Paper — ამობეჭდვა / PDF</h3></div>
+  <div class="rules-box no-print" style="text-align:center;border-left-color:#8b6914;">
+    <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">დააჭირე ღილაკს და შეინახე ეს გვერდი PDF-ად ან ამობეჭდე.</p>
+    <button onclick="window.print()" style="padding:10px 26px;background:#1a1a1a;color:#fff;border:none;font-size:13px;letter-spacing:2px;cursor:pointer;text-transform:uppercase;font-family:sans-serif;">🖨 ამობეჭდვა / Save as PDF</button>
+  </div>
+
 </main>
 
 <footer>
@@ -732,6 +740,7 @@ var tr=document.getElementById('galt-trades');
 if(tr&&g.trades){var rows=g.trades.map(function(t){return '<tr><td style="padding:5px 4px;">'+t.date+'</td><td>'+t.op+'</td><td style="text-align:right;">'+(t.price||'—')+'</td><td style="text-align:right;">'+(t.fee||'—')+'</td></tr>';}).join('');tr.innerHTML='<table style="width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:11.5px;">'+hd+rows+'<tr style="border-top:1px solid var(--border);font-weight:700;"><td style="padding:6px 4px;" colspan="3">ჯამური საკომისიო</td><td style="text-align:right;color:var(--red);">$'+(+g.fees||0).toFixed(2)+'</td></tr></table>';}
 var tf=document.getElementById('me-transfers');
 if(tf&&D.transfers){var th='<tr style="text-align:left;color:var(--muted);font-size:9px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border);"><th style="padding:6px 4px;">თარიღი</th><th>საიდან → სად</th><th>ტიპი</th><th style="text-align:right;">თანხა</th></tr>';var rs=D.transfers.map(function(x){return '<tr><td style="padding:5px 4px;">'+x.date+'</td><td>'+x.from+' → '+x.to+'</td><td>'+(x.type||'')+'</td><td style="text-align:right;">'+M(x.amount)+'</td></tr>';}).join('');tf.innerHTML='<table style="width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:11.5px;">'+th+rs+'</table><div style="font-size:10px;color:var(--muted);margin-top:8px;">შიდა გადატანა მთლიან ჩარიცხულ თანხას არ ცვლის.</div>';}
+var fe=document.getElementById('me-fees');if(fe){fe.textContent='გადახდილი საკომისიო/გადასახადი: $'+((+D.feesPaid||0).toFixed(2));}
 }catch(e){console.warn('meportf',e);}</script>
 <script>
   // ===== Date =====
