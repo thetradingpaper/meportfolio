@@ -1,0 +1,674 @@
+/* ==========================================================
+   The Trading Paper — საერთო სტილი
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@400;600;700;900&family=Noto+Sans+Georgian:wght@400;500;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f7f3ec;
+  --paper: #fffdf7;
+  --ink: #1a1a1a;
+  --muted: #6b6b6b;
+  --rule: #1a1a1a;
+  --red: #b91c1c;
+  --green: #166534;
+  --accent: #8b6914;
+  --border: #d4cfc4;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Noto Serif Georgian', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ===== Masthead ===== */
+.masthead {
+  background: var(--paper);
+  border-bottom: 3px double var(--rule);
+  padding: 24px 0 12px;
+  text-align: center;
+}
+
+.masthead .top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 24px 12px;
+  border-bottom: 1px solid var(--border);
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.masthead h1 {
+  font-family: 'Noto Serif Georgian', serif;
+  font-weight: 900;
+  font-size: 56px;
+  letter-spacing: -1px;
+  margin: 16px 0 8px;
+  line-height: 1;
+}
+
+.masthead .tagline {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.masthead nav {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.masthead nav a {
+  color: var(--ink);
+  text-decoration: none;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.masthead nav a:hover,
+.masthead nav a.active {
+  border-bottom-color: var(--red);
+}
+
+/* ===== Container ===== */
+.container {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 32px 36px;
+}
+
+.container.narrow {
+  max-width: 800px;
+}
+
+/* ===== Section headings ===== */
+.section-head {
+  border-top: 2px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0;
+  margin: 32px 0 24px;
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Noto Serif Georgian', serif;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1.2;
+  margin: 24px 0 12px;
+}
+
+h3 {
+  font-family: 'Noto Serif Georgian', serif;
+  font-weight: 700;
+  font-size: 22px;
+  margin: 20px 0 8px;
+}
+
+p { margin: 0 0 16px; }
+
+a { color: var(--red); }
+
+/* ===== Card grid ===== */
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+.grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+@media (max-width: 800px) {
+  .grid.cols-2, .grid.cols-3 { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  padding: 24px;
+}
+
+.card h3 { margin-top: 0; }
+
+.card .meta {
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+/* ===== Tables ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--paper);
+  margin: 16px 0 24px;
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 14px;
+}
+
+th, td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+tr:hover { background: rgba(0,0,0,0.02); }
+
+.pos { color: var(--green); font-weight: 600; }
+.neg { color: var(--red); font-weight: 600; }
+
+/* ===== Widget wrappers ===== */
+.widget {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.widget-title {
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ===== Article ===== */
+.article-body {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.article-body p { margin-bottom: 20px; }
+
+.article-body h2 {
+  font-size: 28px;
+  margin-top: 36px;
+}
+
+.article-body h3 { font-size: 20px; }
+
+.article-meta {
+  text-align: center;
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 8px 0 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.dek {
+  font-style: italic;
+  font-size: 20px;
+  color: var(--muted);
+  text-align: center;
+  margin: 0 0 24px;
+  line-height: 1.4;
+}
+
+/* ===== Footer ===== */
+footer {
+  border-top: 3px double var(--rule);
+  padding: 32px 24px;
+  margin-top: 64px;
+  text-align: center;
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* ===== Hero ===== */
+.hero {
+  text-align: center;
+  padding: 24px 0 32px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
+}
+
+.hero h2 {
+  font-size: 42px;
+  margin-bottom: 8px;
+}
+
+.hero .dek {
+  margin-bottom: 0;
+}
+
+/* ===== Lists ===== */
+ul, ol { padding-left: 24px; margin-bottom: 16px; }
+li { margin-bottom: 8px; }
+
+/* ===== Pull quotes / callouts ===== */
+.callout {
+  border-left: 4px solid var(--red);
+  padding: 12px 20px;
+  margin: 24px 0;
+  font-style: italic;
+  background: rgba(185, 28, 28, 0.04);
+}
+
+/* ===== Transactions ===== */
+.tx-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 12px 0;
+  margin: 32px 0 16px;
+}
+
+.tx-title {
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.history-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  transition: all 0.15s;
+}
+
+.history-btn:hover { background: var(--ink); color: var(--paper); }
+
+.tx-list { margin: 16px 0 24px; }
+
+.tx {
+  display: grid;
+  grid-template-columns: 110px 90px 1fr;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 14px;
+}
+
+.tx:first-child { border-top: 1px solid var(--border); }
+.tx:hover { background: rgba(0,0,0,0.02); }
+
+.tx-date {
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.tx-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 2px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.badge-deposit { background: var(--green); color: white; }
+.badge-buy     { background: var(--ink); color: var(--paper); }
+.badge-sell    { background: var(--red); color: white; }
+.badge-fee     { background: var(--muted); color: white; }
+
+.tx-line { color: var(--ink); }
+.tx-line .muted { color: var(--muted); font-size: 13px; }
+
+@media (max-width: 700px) {
+  .tx { grid-template-columns: 1fr; gap: 6px; }
+}
+
+/* ===== Pagination ===== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 24px 0 32px;
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 13px;
+}
+
+.page-link, .page-current {
+  min-width: 36px;
+  padding: 6px 12px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.page-link:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+.page-current {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+  font-weight: 700;
+  cursor: default;
+}
+
+/* ===== Summary grid (history page) ===== */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.summary-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  padding: 20px;
+  text-align: center;
+}
+
+.summary-card.big {
+  grid-column: 1 / -1;
+  padding: 32px;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.summary-label {
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.summary-card.big .summary-label { color: rgba(255,255,255,0.6); }
+
+.summary-value {
+  font-family: 'Noto Serif Georgian', serif;
+  font-weight: 700;
+  font-size: 24px;
+  font-variant-numeric: tabular-nums;
+}
+
+.summary-card.big .summary-value { font-size: 42px; }
+
+.summary-pnl {
+  margin-top: 12px;
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 1px;
+}
+
+.summary-pnl.pos { color: #4ade80; }
+.summary-pnl.neg { color: #f87171; }
+
+@media (max-width: 700px) {
+  .summary-grid { grid-template-columns: 1fr; }
+  .summary-card.big .summary-value { font-size: 32px; }
+}
+
+/* ===== Stat banner (per-portfolio newspaper-style top) ===== */
+.stat-banner {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-top: 3px double var(--rule);
+  border-bottom: 3px double var(--rule);
+  padding: 24px 28px;
+  margin-bottom: 24px;
+}
+
+.stat-banner-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.stat-name {
+  font-family: 'Noto Serif Georgian', serif;
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.stat-tag {
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.stat-grid.with-div {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+@media (max-width: 1100px) {
+  .stat-grid.with-div { grid-template-columns: repeat(3, 1fr); }
+}
+
+.stat-val .stat-sub {
+  display: block;
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.stat-cell {
+  text-align: center;
+  padding: 8px 4px;
+}
+
+.stat-label {
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.stat-val {
+  font-family: 'Noto Serif Georgian', serif;
+  font-weight: 700;
+  font-size: 22px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.5px;
+}
+
+.stat-val.pos { color: var(--green); }
+.stat-val.neg { color: var(--red); }
+
+.stat-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.live-dot {
+  color: var(--red);
+  font-weight: 700;
+  letter-spacing: 2px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+@media (max-width: 700px) {
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-val { font-size: 18px; }
+}
+
+/* ===== Portfolio body: holdings table + donut chart side-by-side ===== */
+.port-body {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+.port-holdings { min-width: 0; }
+.port-holdings table { margin: 0; }
+
+.port-donut {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  padding: 16px;
+}
+
+@media (max-width: 900px) {
+  .port-body { grid-template-columns: 1fr; }
+  .port-donut { max-width: 400px; margin: 0 auto; width: 100%; }
+}
+
+/* ===== Empty state for transactions ===== */
+.empty-state {
+  background: var(--paper);
+  border: 1px dashed var(--border);
+  padding: 32px 16px;
+  text-align: center;
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ===== Live-price session badge & day change ===== */
+.sess-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 1px 4px;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-left: 4px;
+  font-family: 'Inter', sans-serif;
+}
+.sess-badge.pre  { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+.sess-badge.post { background: #e0e7ff; color: #3730a3; border: 1px solid #a5b4fc; }
+
+.day-chg {
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: 2px;
+  font-family: 'Inter', sans-serif;
+}
+.day-chg.pos { color: var(--green, #166534); }
+.day-chg.neg { color: var(--red,   #b91c1c); }
+
+/* ===== Live-price session badge & day change ===== */
+.sess-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 1px 4px;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-left: 4px;
+  font-family: 'Inter', sans-serif;
+}
+.sess-badge.pre  { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+.sess-badge.post { background: #e0e7ff; color: #3730a3; border: 1px solid #a5b4fc; }
+
+.day-chg {
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: 2px;
+  font-family: 'Inter', sans-serif;
+}
+.day-chg.pos { color: var(--green, #166534); }
+.day-chg.neg { color: var(--red,   #b91c1c); }
