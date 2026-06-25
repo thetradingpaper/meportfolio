@@ -23,25 +23,29 @@ const portfolios = {
     startDate: '2025-12-09',
     annualGoalPct: 35,
     holdings: [
-      // Cached values from Issue 06 snapshot — live prices repaint these every 60s.
+      // Cached values from Issue 06 snapshot — live prices repaint these every 10s.
       // divYield = approx. annual dividend yield in % (BOG taxes dividends 30% at source → net = gross × 0.70)
-      { ticker: 'SPCX', name: 'Space Exploration Technologies Corp', shares: 0.07576271, avgBuy: 164.99, invested: 13.00, value: 12.49, color: '#0f3057', divYield: 0.00 },
-{ ticker: 'SMH',  name: 'VanEck Semiconductors ETF',         shares: 0.79785924, avgBuy: 493.41, invested: 393.67, value: 455.51, color: '#b91c1c', divYield: 0.26 },
-      { ticker: 'VOO',  name: 'Vanguard S&P 500 ETF',              shares: 0.43807493, avgBuy: 633.25, invested: 277.41, value: 292.22, color: '#166534', divYield: 1.11 },
-      { ticker: 'ASX',  name: 'ASE Industrial Holding',            shares: 6.35610606, avgBuy:  34.24, invested: 217.63, value: 218.02, color: '#8b6914', divYield: 1.52 },
-      { ticker: 'SSRM', name: 'SSR Mining Inc',                    shares: 1.46712736, avgBuy:  33.40, invested:  49.00, value:  49.00, color: '#0891b2', divYield: 0.00 },
-      { ticker: 'KOID', name: 'KraneShares Humanoid Robotics ETF', shares: 3.34000784, avgBuy:  40.15, invested: 134.11, value: 132.56, color: '#4b5563', divYield: 0.01 },
-      { ticker: 'MP',   name: 'MP Materials Corp',                 shares: 1.03896426, avgBuy:  64.49, invested:  67.00, value:  55.53, color: '#b5651d', divYield: 0.00 },
-      { ticker: 'VRT',  name: 'Vertiv Holdings Co',                shares: 0.16056065, avgBuy: 311.41, invested:  50.00, value:  45.11, color: '#3d8c7a', divYield: 0.08 },
-      { ticker: 'WMT',  name: 'Walmart Inc',                       shares: 0.22569679, avgBuy: 115.20, invested:  26.00, value:  27.22, color: '#7a8c2a', divYield: 0.90 },
-      { ticker: 'WQTM', name: 'WisdomTree Quantum Computing Fund', shares: 1.68379924, avgBuy:  38.09, invested:  64.13, value:  59.15, color: '#2563eb', divYield: 0.00 },
-      { ticker: 'MNST', name: 'Monster Beverage Corporation',     shares: 0.19100633, avgBuy:  91.62, invested:  17.50, value:  17.58, color: '#65a30d', divYield: 0.00 },
+      { ticker: 'SPCX', name: 'Space Exploration Technologies Corp', shares: 0.07576271, avgBuy: 171.59, invested: 13.00, value: 11.73, color: '#0f3057', divYield: 0.00 },
+{ ticker: 'SMH',  name: 'VanEck Semiconductors ETF',         shares: 0.79785924, avgBuy: 493.41, invested: 393.67, value: 503.96, color: '#b91c1c', divYield: 0.26 },
+      { ticker: 'VOO',  name: 'Vanguard S&P 500 ETF',              shares: 0.43807493, avgBuy: 633.25, invested: 277.41, value: 295.77, color: '#166534', divYield: 1.11 },
+      { ticker: 'ASX',  name: 'ASE Industrial Holding',            shares: 9.99266799, avgBuy:  37.24, invested: 372.13, value: 415.79, color: '#8b6914', divYield: 1.52 },
+      { ticker: 'SSRM', name: 'SSR Mining Inc',                    shares: 3.40788323, avgBuy:  31.25, invested:  106.50, value:  98.39, color: '#0891b2', divYield: 0.00 },
+      { ticker: 'KOID', name: 'KraneShares Humanoid Robotics ETF', shares: 3.34000784, avgBuy:  40.15, invested: 134.11, value: 134.34, color: '#4b5563', divYield: 0.01 },
+      { ticker: 'MP',   name: 'MP Materials Corp',                 shares: 1.03896426, avgBuy:  64.97, invested:  67.50, value:  57.85, color: '#b5651d', divYield: 0.00 },
+      { ticker: 'VRT',  name: 'Vertiv Holdings Co',                shares: 0.16056065, avgBuy: 314.52, invested:  50.50, value:  53.54, color: '#3d8c7a', divYield: 0.08 },
+      { ticker: 'WMT',  name: 'Walmart Inc',                       shares: 0.22569679, avgBuy: 117.41, invested:  26.50, value:  26.61, color: '#7a8c2a', divYield: 0.90 },
+      { ticker: 'WQTM', name: 'WisdomTree Quantum Computing Fund', shares: 1.68379924, avgBuy:  38.68, invested:  65.13, value:  60.90, color: '#2563eb', divYield: 0.00 },
+      { ticker: 'MNST', name: 'Monster Beverage Corporation',     shares: 0.19100633, avgBuy:  94.24, invested:  18.00, value:  18.20, color: '#65a30d', divYield: 0.00 },
     ],
     cash: 0.00,                       // $185 deposit fully deployed on 29 May 2026
     priorDeposits: 907.76,
     priorCostBasis: 1007.05,
     transactions: [
       // Newest first
+      { date: '2026-06-25', type: 'buy',      ticker: 'ASX',  shares: 3.63656193, price: 42.18, commission: 0.50 },
+      { date: '2026-06-25', type: 'buy',      ticker: 'SSRM', shares: 1.94075587, price: 29.37, commission: 0.50 },
+      { date: '2026-06-25', type: 'dividend', ticker: 'VRT',  amount: 0.01, note: '$0.0625/share' },
+      { date: '2026-06-24', type: 'deposit',  amount: 211.37, note: 'transfer in' },
       { date: '2026-06-17', type: 'buy',    ticker: 'SSRM', shares: 1.46712736, price: 33.40,  commission: 0.50 },
       { date: '2026-06-17', type: 'sell',   ticker: 'ASX',  shares: 1.30645860, price: 38.27,  commission: 0.50 },
       { date: '2026-06-15', type: 'buy',    ticker: 'WQTM', shares: 1.00906981, price: 38.10,  commission: 0.50 },
@@ -221,6 +225,12 @@ function renderTx(tx) {
       ${tx.shares} sh @ ${fmtMoney(tx.price)}${tx.commission ? ` · <span class="muted">fee ${fmtMoney(tx.commission)}</span>` : ''} ·
       received <strong>${fmtMoney(txReceived(tx))}</strong>
     </span>
+  </div>`;
+
+  if (tx.type === 'dividend') return `<div class="tx tx-deposit">
+    ${date}
+    <span class="tx-badge badge-deposit">DIVIDEND</span>
+    <span class="tx-line"><strong>${tx.ticker||''}</strong> &nbsp;+${fmtMoney(tx.amount)}${tx.note ? ` &middot; <span class="muted">${tx.note}</span>` : ''}</span>
   </div>`;
 
   if (tx.type === 'fee') return `<div class="tx tx-fee">
