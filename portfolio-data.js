@@ -6,7 +6,12 @@
    ================================================================== */
 window.MEPORTF = {
   lastUpdated: '2026-06-24',
-  feesPaid: 40.00,   // ჯამური გადახდილი საკომისიო/გადასახადი
+  feesPaid: 47.50,   // ჯამური საკომისიო (BOG ისტორია $7.50 + Galt&Taggart $40)
+  feesByBook: [
+    { book:'BOG', amount:7.50, note:'ისტორიის საკომისიოები' },
+    { book:'Galt & Taggart', amount:40.00, note:'4 × $10' }
+  ],
+  marginFinancingEst: 1.96,   // ≈ $0.14/დღე × 14 დღე (GALT margin, შეფასებითი)
 
   /* BOG — Galt & Taggart-იდან გადმოტანილი ნაღდი ფული */
   bog: {
