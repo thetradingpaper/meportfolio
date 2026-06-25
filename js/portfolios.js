@@ -450,38 +450,34 @@ function renderHoldings(tableBodyId, portfolioKey) {
 // LIVE PRICE FETCHING — Yahoo Finance v8 chart API
 // ============================================================
 const PRICE_PROXIES = [
-  '',
-  'https://corsproxy.io/?',
-  'https://api.allorigins.win/raw?url=',
+  u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
+  u => 'https://corsproxy.io/?url=' + encodeURIComponent(u),
+  u => 'https://api.codetabs.com/v1/proxy/?quest=' + encodeURIComponent(u),
+  u => 'https://thingproxy.freeboard.io/fetch/' + u,
 ];
 
+function _parseYahooMeta(data) {
+  const meta = data && data.chart && data.chart.result && data.chart.result[0] && data.chart.result[0].meta;
+  if (!meta || !meta.regularMarketPrice) throw new Error('no meta');
+  const state = meta.marketState || 'REGULAR';
+  const reg = meta.regularMarketPrice, pre = meta.preMarketPrice, post = meta.postMarketPrice;
+  const prev = meta.chartPreviousClose || meta.previousClose || reg;
+  let price = reg, session = 'REG';
+  if ((state === 'PRE' || state === 'PREPRE') && pre) { price = pre; session = 'PRE'; }
+  else if ((state === 'POST' || state === 'POSTPOST') && post) { price = post; session = 'POST'; }
+  else if (state === 'CLOSED' && post) { price = post; session = 'POST'; }
+  return { price, session, state, regular: reg, pre, post, previousClose: prev };
+}
+
+// Race all proxies in parallel — fastest valid response wins (lowest latency, resilient to a dead proxy).
 async function fetchLiveQuote(ticker) {
   const target = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?interval=1m&range=1d&includePrePost=true`;
-  for (const proxy of PRICE_PROXIES) {
-    try {
-      const url = proxy ? proxy + encodeURIComponent(target) : target;
-      const res = await fetch(url, { cache: 'no-store', mode: 'cors' });
-      if (!res.ok) continue;
-      const data = await res.json();
-      const meta = data?.chart?.result?.[0]?.meta;
-      if (!meta || !meta.regularMarketPrice) continue;
-
-      const state = meta.marketState || 'REGULAR';
-      const reg   = meta.regularMarketPrice;
-      const pre   = meta.preMarketPrice;
-      const post  = meta.postMarketPrice;
-      const prev  = meta.chartPreviousClose || meta.previousClose || reg;
-
-      let price = reg;
-      let session = 'REG';
-      if ((state === 'PRE' || state === 'PREPRE') && pre)      { price = pre;  session = 'PRE';  }
-      else if ((state === 'POST' || state === 'POSTPOST') && post) { price = post; session = 'POST'; }
-      else if (state === 'CLOSED' && post)                      { price = post; session = 'POST'; }
-
-      return { price, session, state, regular: reg, pre, post, previousClose: prev };
-    } catch (e) { /* try next proxy */ }
-  }
-  return null;
+  const attempts = PRICE_PROXIES.map(mk =>
+    fetch(mk(target), { cache: 'no-store' })
+      .then(r => { if (!r.ok) throw new Error('bad status'); return r.json(); })
+      .then(_parseYahooMeta)
+  );
+  try { return await Promise.any(attempts); } catch (e) { return null; }
 }
 
 async function fetchLivePrice(ticker) {
