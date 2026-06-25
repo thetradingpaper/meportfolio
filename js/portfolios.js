@@ -272,6 +272,14 @@ function renderStatBanner(containerId, portfolioKey) {
           <div class="stat-val pos">${fmtMoney(divNet)}<span class="stat-sub">≈ ${portYieldPct.toFixed(2)}% / წელი · 30% GE გადასახადის შემდეგ</span></div>
         </div>` : '';
 
+  let divReceived = 0;
+  for (const tx of p.transactions) { if (tx.type === 'dividend') divReceived += (tx.amount || 0); }
+  const recvCell = divReceived > 0 ? `
+        <div class="stat-cell">
+          <div class="stat-label">სულ მიღებული დივიდენდი <a href="dividends.html" style="text-decoration:none;color:#b91c1c;font-weight:800" title="დივიდენდების ისტორია">↗</a></div>
+          <div class="stat-val pos">${fmtMoney(divReceived)}<span class="stat-sub">წმინდა · მიღებული</span></div>
+        </div>` : '';
+
   const gridClass = anyYield ? 'stat-grid with-div' : 'stat-grid';
 
   el.innerHTML = `
@@ -296,7 +304,7 @@ function renderStatBanner(containerId, portfolioKey) {
         <div class="stat-cell">
           <div class="stat-label">უკუგება</div>
           <div class="stat-val ${pnlClass}">${pctStr}</div>
-        </div>${divCell}
+        </div>${divCell}${recvCell}
       </div>
       <div class="stat-foot">
         <span>თვალყურის დევნება დაიწყო: ${fmtDate(p.startDate)}</span>
