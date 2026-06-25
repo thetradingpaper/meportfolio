@@ -996,16 +996,16 @@ var fe=document.getElementById('me-fees');if(fe){var bd=(D.feesByBook||[]).map(f
 
   function refreshAllBooks(){ return Promise.all([refreshAll('bog'), refreshAll('tbc'), refreshAll('galt')]).then(renderTotal); }
   refreshAllBooks();
-  setInterval(refreshAllBooks, 30000);
+  setInterval(refreshAllBooks, 10000);
 </script>
 
 
 <script>
 (function(){
   var g=document.getElementById('tp-gate'),i=document.getElementById('tp-code'),b=document.getElementById('tp-go'),e=document.getElementById('tp-err');
-  if(!g)return;
+  if(!g)return;try{if(localStorage.getItem('tp_ok')==='1'){g.style.display='none';document.documentElement.style.overflow='';return;}}catch(_e){}
   document.documentElement.style.overflow='hidden';
-  function u(){ if((i.value||'').trim()==='111'){ g.style.display='none'; document.documentElement.style.overflow=''; } else { e.textContent='არასწორი კოდი'; i.value=''; i.focus(); } }
+  function u(){ if((i.value||'').trim()==='111'){ try{localStorage.setItem('tp_ok','1');}catch(_e){}g.style.display='none'; document.documentElement.style.overflow=''; } else { e.textContent='არასწორი კოდი'; i.value=''; i.focus(); } }
   b.addEventListener('click',u);
   i.addEventListener('input',function(){if((i.value||'').trim()==='111')u();});
   i.addEventListener('focus',function(){if((i.value||'')!==''&&(i.value||'').trim()!=='111')i.value='';});
