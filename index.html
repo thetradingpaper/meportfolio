@@ -933,7 +933,7 @@ var fe=document.getElementById('me-fees');if(fe){var bd=(D.feesByBook||[]).map(f
   async function refreshAll(key) {
     try {
       const updated = await refreshLivePrices(key);
-      if(key==='bog'){portfolios.bog.cash=211.37;}
+      if(key==='bog'){portfolios.bog.cash=0;}
       renderStatBanner(`${key}-banner`, key);
       renderHoldingsCards(`${key}-hcards`, key);
       renderHoldingsSummary(`${key}-holdings-summary`, `${key}-open-count`, key);
