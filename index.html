@@ -996,7 +996,7 @@ var fe=document.getElementById('me-fees');if(fe){var bd=(D.feesByBook||[]).map(f
 
   function refreshAllBooks(){ return Promise.all([refreshAll('bog'), refreshAll('tbc'), refreshAll('galt')]).then(renderTotal); }
   refreshAllBooks();
-  setInterval(refreshAllBooks, 10000);
+  setInterval(refreshAllBooks, 5000);
 </script>
 
 
